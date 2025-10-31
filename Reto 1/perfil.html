@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Campos</title>
+
+    <style>
+        #nombre {
+            color: gray;
+        }
+
+        #descripcion {
+            font-family: sans-serif;
+        }
+
+        .contenedor {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        #imagen {
+            width: 280px;
+            border-top-left-radius: 15%;
+        }
+
+        #informacion {
+            border: 2px solid black;
+            padding: 10px;
+            box-shadow: 6px 6px 0 0 gray;
+        }
+
+        tfoot a {
+            color:orange;
+        }
+        
+        tfoot a:active{
+            color:red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="contenedor">
+        <img id="imagen" src="30136061.jpg" alt="">
+        <div id="informacion">
+            <h2 id="nombre">José David Campos</h2>
+            <p id="descripcion"> <i>Soy estudiante de la escuela de Computación, actualmente estoy cursando mi sexto
+                    semestre. Ahora mismo estoy viendo las materias de Machine Learning,
+                    ATI, Redes de Computadoras y Enfoques y Métodos de Investigación en Ciencias de la Computación. Mi
+                    hobby preferido es jugar al fútbol.</i>
+            </p>
+
+            <table>
+                <thead></thead>
+                <tfoot>
+                    <tr>
+                        <td>Si necesitan comunicarse conmigo me pueden escribir a: <a href="mailto:jd19122003@gmail.com">jd19122003@gmail.com</a></td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>Mi color favorito es: </td>
+                        <td>Verde</td>
+                    </tr>
+                    <tr>
+                        <td>Mi libro favorito es:</td>
+                        <td>Canción de Hielo y Fuego: Danza de Dragones</td>
+                    </tr>
+                    <tr>
+                        <td>Estilo de música preferida es:</td>
+                        <td>Reguetón</td>
+                    </tr>
+                    <tr>
+                        <td>Mis videojuegos favoritos son:</td>
+                        <td>The Last of Us y Red Dead Redemption 2</td>
+                    </tr>
+                    <tr>
+                        <td><b>Lenguajes aprendidos:</b></td>
+                        <td><b>Python, Java, C++, Javascript</b></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
