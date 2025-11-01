@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATI[UCV] 2025-2</title>
+    <link rel="icon" type="image/x-icon" href="https://www.ciens.ucv.ve/portalasig2/favicon.ico">
+
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+
+        html, body {
+            height: 100%; 
+            margin: 0;   
+            padding: 0;
+        }
+
+        nav {
+            background-color: skyblue;
+            padding: 0;
+            margin: 0;
+            height: 80px;
+        }
+
+        footer {
+            background-color: skyblue;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 100%;
+        }
+
+        nav ul li {
+            color: white;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        #boton {
+            padding: 4px 15px;
+            color: lightblue;
+        }
+
+        #busqueda {
+            height: 20px;
+        }
+
+        #ati {
+            font-size: xx-large;
+            border-right: 2px solid white;
+            padding-right: 10px;
+        }
+
+        #saludo {
+            justify-content: center;
+        }
+
+        #barrabusqueda {
+            border-left: 2px solid white;
+            padding-left: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 12px 0;
+        }
+
+
+        li p {
+            color: skyblue;
+            text-align: center;
+        }
+
+        #lista-personas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 250px;
+            gap: 20px;
+        }
+
+        #persona {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            justify-items: center;
+            background-color: rgb(233, 231, 231);
+            padding: 20px;
+        }
+
+        section {
+            padding: 30px 50px; 
+            margin-bottom: 50px; 
+        }
+
+        #persona img {
+            max-width: 180px; 
+            max-height: 180px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li id="ati">ATI<sub>[UCV]</sub> 2025-2</li>
+                <li id="saludo">Hola, José Campos</li>
+                <li id="barrabusqueda">
+                    <form action="">
+                        <input name="" id="busqueda" placeholder="Nombre..."></textarea>
+                        <button id="boton">Buscar</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <ul id="lista-personas">
+            <li id="persona">
+                <img src="30136061.jpg" alt="">
+                <p>José David Campos</p>
+            </li>
+            <li id="persona">
+                <img src="dummy1/dummy.jpg" alt="">
+                <p>Maria Valdez</p>
+            </li>
+            <li id="persona">
+                <img src="dummy2/dummy.jpg" alt="">
+                <p>Juana De Arcos</p>
+            </li>
+            <li id="persona">
+                <img src="dummy3/dummy.jpg" alt="">
+                <p>Mery Gonzáles</p>
+            </li>
+            <li id="persona">
+                <img src="dummy4/dummy.jpg" alt="">
+                <p>Marcelo Viera</p>
+            </li>
+            <li id="persona">
+                <img src="dummy5/dummy.jpg" alt="">
+                <p>Pedro Suárez</p>
+            </li>
+            <li id="persona">
+                <img src="dummy6/dummy.jpg" alt="">
+                <p>Raul Mendez</p>
+            </li>
+            <li id="persona">
+                <img src="dummy2/dummy.jpg" alt="">
+                <p>Cristina Torres</p>
+            </li>
+            <li id="persona">
+                <img src="dummy3/dummy.jpg" alt="">
+                <p>Catalina Ponferradina</p>
+            </li>
+            <li id="persona">
+                <img src="dummy1/dummy.jpg" alt="">
+                <p>Linda Caicedo</p>
+            </li>
+            <li id="persona">
+                <img src="dummy2/dummy.jpg" alt="">
+                <p>Claudia Pina</p>
+            </li>
+            <li id="persona">
+                <img src="dummy5/dummy.jpg" alt="">
+                <p>Joao Fernandes</p>
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Copyright © 2025 Escuela de computación - ATI. Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
