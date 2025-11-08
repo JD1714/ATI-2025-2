@@ -11,7 +11,13 @@
 
 <body>
     <div class="contenedor">
-        <img id="imagen" src="30136061.jpg" alt="">
+        <picture>
+            <source srcset="30136061Pequena.jpg" media="(max-width: 768px)">
+
+            <source srcset="30136061Grande.jpg" media="(min-width: 769px)">
+
+            <img id="imagen" src="30136061Grande.jpg" alt="">
+        </picture>
         <div id="informacion">
             <h2 id="nombre">José David Campos Cabrera</h2>
             <p id="descripcion"> <i>Soy estudiante de la escuela de Computación, actualmente estoy cursando mi sexto
@@ -23,7 +29,8 @@
             <table>
                 <tfoot>
                     <tr>
-                        <td>Si necesitan comunicarse conmigo me pueden escribir a: <a href="mailto:jd19122003@gmail.com">jd19122003@gmail.com</a></td>
+                        <td>Si necesitan comunicarse conmigo me pueden escribir a: <a
+                                href="mailto:jd19122003@gmail.com">jd19122003@gmail.com</a></td>
                     </tr>
                 </tfoot>
                 <tbody>
