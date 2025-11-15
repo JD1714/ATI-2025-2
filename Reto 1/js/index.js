@@ -27,3 +27,21 @@ function configuracionPerfil(){
 
 configuracionPerfil();
 configuracionIndex();
+
+function cargarPersonas(){
+    const personas = document.getElementById('lista-personas');
+
+    perfiles.forEach(persona => {
+        const li = document.createElement('li');
+        const img = document.createElement('img');
+        const p = document.createElement('p');
+        li.classList.add('persona');
+        li.appendChild(img);
+        li.appendChild(p);
+        img.src = persona.imagen;
+        p.textContent = persona.nombre;
+        personas.appendChild(li);
+    });
+}
+
+cargarPersonas();
