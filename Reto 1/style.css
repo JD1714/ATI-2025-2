@@ -145,6 +145,13 @@
             -webkit-animation-timing-function: ease-out;
             transform: scale(1.075) rotate(6deg);
         }
+        
+        .mensaje-no-alumnos {
+            color: #99c5dd;
+            font-size: large;
+            list-style: none;
+            text-align: center;
+        }
 
         @-webkit-keyframes sobrepasar {
             0% {

@@ -1,3 +1,5 @@
+let idioma;
+
 function actualizarHTML(id, contenido){
     const elemento = document.getElementById(id);
     if(elemento){
@@ -19,10 +21,14 @@ function configuracionIndex(){
     busqueda.placeholder = config.nombre;
 }
 
-function cargarPersonas(idioma){
+function cargarPersonas(datos){
+    const listaPerfiles = datos || perfiles;
+
     const personas = document.getElementById('lista-personas');
+
     if(personas){
-        perfiles.forEach(persona => {
+        personas.innerHTML = '';
+        listaPerfiles.forEach(persona => {
             const li = document.createElement('li');
             const img = document.createElement('img');
             const p = document.createElement('p');
@@ -50,25 +56,59 @@ function cargarIdioma(){
     const idiomaPorDefecto = 'ES';
 
     const hash = window.location.hash.substring(1).toUpperCase();
-    const idiomaSeleccionado = idiomas.includes(hash) ? hash : idiomaPorDefecto;
-    const rutaArchivo = 'conf/config'+idiomaSeleccionado+'.json';
+    idioma = idiomas.includes(hash) ? hash : idiomaPorDefecto;
+    const rutaArchivo = 'conf/config'+idioma+'.json';
 
     const script = document.createElement('script');
     script.src = rutaArchivo;
     script.type = 'text/javascript';
 
     script.onload = function() {
-        // if (typeof window.config !== 'undefined') {
-        //     config = window.config;
-        // }
-        // if (typeof window.perfiles !== 'undefined') {
-        //     perfiles = window.perfiles;
-        // }
         configuracionIndex();
-        cargarPersonas(idiomaSeleccionado);
+        cargarPersonas();
+        inicializarBusqueda();
     }
 
     document.head.appendChild(script);
 }
 
 cargarIdioma();
+
+function filtrarPersonas(query) {
+    const listaPersonas = document.getElementById('lista-personas');
+    const mensajeBusqueda = config.mensaje_no_encontrado || "No hay alumnos que tengan en su nombre: [query]";
+    const queryLimpia = query.trim().toLowerCase();
+    if (queryLimpia === '') {
+        listaPersonas.innerHTML = '';
+        cargarPersonas(perfiles);
+        return;
+    }
+
+    const resultados = perfiles.filter(persona => {
+        const nombreLimpio = persona.nombre.toLowerCase();
+        return nombreLimpio.includes(queryLimpia);
+    });
+    listaPersonas.innerHTML = '';
+    
+    if (resultados.length > 0) {
+        cargarPersonas(resultados); 
+    } else {
+        const mensajeFinal = mensajeBusqueda.replace('[query]', `"${query}"`);
+        listaPersonas.innerHTML = `<p class="mensaje-no-alumnos">${mensajeFinal}</p>`;
+    }
+}
+
+function inicializarBusqueda() {
+    const boton = document.getElementById('busqueda');
+    const formulario = boton.closest('form');
+
+    boton.addEventListener('input', function() {
+        filtrarPersonas(this.value);
+    });
+
+    if (formulario) {
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+    }
+}
