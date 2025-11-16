@@ -16,10 +16,9 @@ function configuracionPerfil(){
     actualizarHTML('lenguajes', config.lenguajes);
 }
 
-configuracionPerfil();
-
 function extraerCI(){
     const idSeleccionado = window.location.hash;
+    console.log(idSeleccionado);
     if(idSeleccionado){
         const ci = idSeleccionado.substring(1);
         return ci;
@@ -57,5 +56,31 @@ function rellenarPerfil(){
     }
     document.head.appendChild(script);
 }
+function extraerIdioma(){
+    const infoURL = new URLSearchParams(window.location.search);
+    const idiomaParametro = infoURL.get('lang');
+    
+    const idiomas = ['ES', 'EN', 'PT'];
+    const idiomaPorDefecto = 'ES';
 
-rellenarPerfil();
+    if (idiomaParametro && idiomas.includes(idiomaParametro.toUpperCase())) {
+        return idiomaParametro.toUpperCase();
+    }
+    return idiomaPorDefecto;
+}
+
+function cargarPerfil(){
+    const idiomaSeleccionado = extraerIdioma();
+    const rutaConfig = `conf/config${idiomaSeleccionado}.json`;
+    const scriptConfig = document.createElement('script');
+    scriptConfig.src = rutaConfig;
+    scriptConfig.type = 'text/javascript';
+
+    scriptConfig.onload = function() {
+        configuracionPerfil();
+        rellenarPerfil();
+    }
+    document.head.appendChild(scriptConfig);
+}
+
+cargarPerfil();

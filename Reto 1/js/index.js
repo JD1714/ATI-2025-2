@@ -14,11 +14,12 @@ function configuracionIndex(){
     actualizarHTML('periodo', sitio[2]);
     actualizarHTML('saludo', config.saludo);
     actualizarHTML('copyright',  config.copyRight);
+    actualizarHTML('boton', config.buscar);
+    let busqueda = document.getElementById('busqueda');
+    busqueda.placeholder = config.nombre;
 }
 
-configuracionIndex();
-
-function cargarPersonas(){
+function cargarPersonas(idioma){
     const personas = document.getElementById('lista-personas');
     if(personas){
         perfiles.forEach(persona => {
@@ -34,7 +35,7 @@ function cargarPersonas(){
             li.addEventListener('click', function(event) {
                 const personaSeleccionada = event.currentTarget;
                 const idSeleccionado = personaSeleccionada.id;
-                const urlRedireccion = `perfil.html#${idSeleccionado}`;
+                const urlRedireccion = `perfil.html?lang=${idioma}#${idSeleccionado}`;
                 window.location.href = urlRedireccion;
             });
             personas.appendChild(li);
@@ -44,4 +45,30 @@ function cargarPersonas(){
     return false;
 }
 
-cargarPersonas();
+function cargarIdioma(){
+    const idiomas = ['ES', 'EN', 'PT'];
+    const idiomaPorDefecto = 'ES';
+
+    const hash = window.location.hash.substring(1).toUpperCase();
+    const idiomaSeleccionado = idiomas.includes(hash) ? hash : idiomaPorDefecto;
+    const rutaArchivo = 'conf/config'+idiomaSeleccionado+'.json';
+
+    const script = document.createElement('script');
+    script.src = rutaArchivo;
+    script.type = 'text/javascript';
+
+    script.onload = function() {
+        // if (typeof window.config !== 'undefined') {
+        //     config = window.config;
+        // }
+        // if (typeof window.perfiles !== 'undefined') {
+        //     perfiles = window.perfiles;
+        // }
+        configuracionIndex();
+        cargarPersonas(idiomaSeleccionado);
+    }
+
+    document.head.appendChild(script);
+}
+
+cargarIdioma();
