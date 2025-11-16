@@ -9,18 +9,13 @@
     <link rel="stylesheet" href="style.css">
 
     <script type="text/javascript" src="conf/configES.json" defer></script>
-    <script type="text/javascript" src="js/index.js" defer></script>
+    <script type="text/javascript" src="datos/index.json" defer></script>
+    <script type="text/javascript" src="js/perfil.js" defer></script>
 </head>
 
 <body>
     <div class="contenedor">
-        <picture>
-            <source srcset="" media="(max-width: 768px)">
-
-            <source srcset="" media="(min-width: 769px)">
-
-            <img id="imagen" src="" alt="">
-        </picture>
+        <img id="imagen" src="" alt="">
         <div id="informacion">
             <h2 id="nombre"></h2>
             <p><i id="descripcion"></i>
@@ -29,30 +24,30 @@
             <table>
                 <tfoot>
                     <tr>
-                        <td><p id="email"></p><a
+                        <td><p id="email"></p><a id="emailLink"
                                 href="mailto:"></a></td>
                     </tr>
                 </tfoot>
                 <tbody>
                     <tr>
                         <td><p id="color"></p></td>
-                        <td></td>
+                        <td> <p id="colorRes"></p></td>
                     </tr>
                     <tr>
                         <td><p id="libro"></p></td>
-                        <td></td>
+                        <td> <p id="libroRes"></p></td>
                     </tr>
                     <tr>
-                        <td><p id="musica"></p></td>
-                        <td></td>
+                        <td> <p id="musica"></p></td>
+                        <td> <p id="musicaRes"></p></td>
                     </tr>
                     <tr>
                         <td><p id="video_juego"></p></td>
-                        <td></td>
+                        <td> <p id="video_juegoRes"></p></td>
                     </tr>
                     <tr>
                         <td><b id="lenguajes"></b></td>
-                        <td><b></b></td>
+                        <td><b id="lenguajesRes"></b></td>
                     </tr>
                 </tbody>
             </table>
