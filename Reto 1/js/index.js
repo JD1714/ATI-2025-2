@@ -34,6 +34,7 @@ function cargarPersonas(datos){
             const li = document.createElement('li');
             const img = document.createElement('img');
             const p = document.createElement('p');
+            p.classList.add('personaNombre')
             li.classList.add('persona');
             li.id = persona.ci;
             li.appendChild(img);
@@ -61,12 +62,26 @@ function cargarIdioma(){
     const idiomaParametro = infoURL.get('lang');
     console.log(idiomaParametro);
     let rutaArchivo;
+
+    let urlNecesitaActualizacion = false;
+
     if (idiomaParametro && idiomas.includes(idiomaParametro.toUpperCase())) {
         idioma = idiomaParametro
     }else{
         idioma = idiomaPorDefecto
+        urlNecesitaActualizacion = true;
     }
-    this.location.href = `index.html?lang=${idioma}`
+
+    if (urlNecesitaActualizacion) {
+        infoURL.set('lang', idioma);
+        
+        // Ahora se usa el replaceState para actualizar la URL en la barra de direcciones sin tener que recargar
+        this.history.replaceState(null, '', '?' + infoURL.toString() + window.location.hash);
+        //Este this hace referencia al ámbito local, al window
+    }
+
+    
+    console.log(`Ámbito global ${this}`);
 
     rutaArchivo = 'conf/config'+idioma+'.json';
 
@@ -115,6 +130,8 @@ function inicializarBusqueda() {
 
     boton.addEventListener('input', function() {
         filtrarPersonas(this.value);
+        //Este this hace referencia al boton declarado dentro de esta función, el cual corresponde al input de la barra de busqueda de la página.
+        console.log(`Ámbito local a un objeto ${this}`);
     });
 
     if (formulario) {

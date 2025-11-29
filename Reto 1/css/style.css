@@ -56,7 +56,7 @@
             height: 100%;
         }
 
-        nav ul li {
+        .elementosNav {
             color: white;
             display: flex;
             align-items: center;
@@ -76,14 +76,11 @@
             font-size: xx-large;
             border-right: 2px solid white;
             padding-right: 10px;
+            color:white;
         }
 
         #ati sub {
             font-size: medium;
-        }
-
-        #ati p {
-            color:white;
         }
 
         #saludo {
@@ -103,7 +100,7 @@
         }
 
 
-        li p {
+        .personaNombre {
             color: rgb(90, 144, 165);
             text-align: center;
         }
