@@ -11,6 +11,8 @@ function actualizarHTML(id, contenido){
 
 function configuracionIndex(){
     const sitio = config.sitio;
+    let titulo = sitio[0] + sitio[1] + sitio[2];
+    actualizarHTML('titulo', titulo);
     actualizarHTML('logo', sitio[0]);
     actualizarHTML('uni', sitio[1]);
     actualizarHTML('periodo', sitio[2]);
@@ -55,9 +57,18 @@ function cargarIdioma(){
     const idiomas = ['ES', 'EN', 'PT'];
     const idiomaPorDefecto = 'ES';
 
-    const hash = window.location.hash.substring(1).toUpperCase();
-    idioma = idiomas.includes(hash) ? hash : idiomaPorDefecto;
-    const rutaArchivo = 'conf/config'+idioma+'.json';
+    const infoURL = new URLSearchParams(window.location.search);
+    const idiomaParametro = infoURL.get('lang');
+    console.log(idiomaParametro);
+    let rutaArchivo;
+    if (idiomaParametro && idiomas.includes(idiomaParametro.toUpperCase())) {
+        idioma = idiomaParametro
+    }else{
+        idioma = idiomaPorDefecto
+    }
+    this.location.href = `index.html?lang=${idioma}`
+
+    rutaArchivo = 'conf/config'+idioma+'.json';
 
     const script = document.createElement('script');
     script.src = rutaArchivo;

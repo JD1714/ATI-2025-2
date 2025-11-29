@@ -40,6 +40,7 @@ function rellenarPerfil(){
         });
         imagen.src = perfilIndex.imagen;
         actualizarHTML('nombre', perfil.nombre);
+        actualizarHTML('titulo', perfil.nombre)
         let email = document.getElementById('email');
         let emailRemplazo = email.textContent;
         emailRemplazo = emailRemplazo.replace('[email]', ' ')
